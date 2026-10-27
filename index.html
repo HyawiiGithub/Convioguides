@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111315">
+  <title>Convio · Marketing Member Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ----- GRAPHITE / CONVIO DARK THEME (matches convio.dev) ----- */
+    :root {
+      color-scheme: dark;
+      --bg: #111315;
+      --bg-elevated: #1b1e20;
+      --surface: #202326;
+      --border: #34383c;
+      --text: #e5e7e9;
+      --text-muted: #a0a5aa;
+      --text-soft: #8f969b;
+      --accent: #b8d98a;
+      --accent-soft: rgba(184, 217, 138, 0.78);
+      --mono: 'DM Mono', monospace;
+      --sans: 'Manrope', sans-serif;
+      --shadow: 0 22px 60px #0005;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 95px;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at 78% 0%, rgba(100, 115, 126, 0.10), transparent 34%), var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 44px));
+      margin: auto;
+    }
+
+    /* ----- TOP BAR (dark) ----- */
+    .topbar {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(17, 19, 21, 0.88);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--text);
+    }
+
+    .brand img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+    }
+
+    .brand span {
+      font-size: 19px;
+    }
+
+    .brand .dot-accent {
+      color: #80966d;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .nav a {
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: #f4f5f6;
+    }
+
+    .nav .pill {
+      background: #d4d8dc;
+      color: #17191b;
+      padding: 12px 16px;
+      border-radius: 5px;
+      font-weight: 700;
+    }
+
+    .nav .pill:hover {
+      background: #edf0f2;
+      color: #111315;
+    }
+
+    .menu {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 23px;
+      color: var(--text);
+    }
+
+    /* ----- EYEBROW ----- */
+    .eyebrow {
+      font: 11px var(--mono);
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: #a6b0a2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow:before {
+      content: '';
+      width: 23px;
+      height: 1px;
+      background: #89958a;
+    }
+
+    /* ----- HERO (dark) ----- */
+    .hero {
+      padding: 83px 0 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero:after {
+      content: '';
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      right: -180px;
+      top: -160px;
+      box-shadow: 0 0 0 48px rgba(110, 120, 130, 0.045), 0 0 0 96px rgba(110, 120, 130, 0.025);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 58px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 6.5vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -0.075em;
+      margin: 24px 0 22px;
+      font-weight: 700;
+      max-width: 700px;
+      color: var(--text);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      position: relative;
+      z-index: 0;
+      white-space: nowrap;
+    }
+
+    .hero h1 em:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      left: -3px;
+      right: -5px;
+      bottom: 2px;
+      height: 18px;
+      background: var(--accent-soft);
+      transform: rotate(-1.5deg);
+    }
+
+    .hero p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 530px;
+      margin: 0;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 17px;
+      border-radius: 5px;
+      background: #d4d8dc;
+      color: #17191b;
+      font-size: 12px;
+      font-weight: 700;
+      transition: transform 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: #edf0f2;
+      color: #111315;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid #454a4f;
+      color: var(--text);
+    }
+
+    .btn.secondary:hover {
+      background: #292d31;
+      color: #fff;
+    }
+
+    .micro {
+      font: 10px var(--mono);
+      color: #8e959b;
+      margin-top: 25px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ----- CONSOLE (dark) ----- */
+    .console {
+      background: #101214;
+      color: var(--text);
+      border-radius: 9px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transform: translateY(0);
+      animation: floatin 0.8s both;
+    }
+
+    .console-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #30353a;
+      padding-bottom: 15px;
+      font: 10px var(--mono);
+      color: #9ca4aa;
+    }
+
+    .dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .dots i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #728074;
+    }
+
+    .console-label {
+      font: 10px var(--mono);
+      color: #9ca4aa;
+      margin: 20px 0 10px;
+    }
+
+    .terminal-title {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 25px 1fr auto;
+      gap: 10px;
+      align-items: start;
+      padding: 13px 0;
+      border-top: 1px solid #30353a;
+      font-size: 11px;
+    }
+
+    .event .num {
+      font: 10px var(--mono);
+      color: #9ca4aa;
+    }
+
+    .event strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--text);
+    }
+
+    .event small {
+      color: #9ca4aa;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .tag {
+      font: 9px var(--mono);
+      color: #c9e6a8;
+      border: 1px solid #53614a;
+      padding: 5px 7px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .console-foot {
+      margin-top: 16px;
+      background: #222a23;
+      border-radius: 4px;
+      padding: 12px;
+      font: 10px var(--mono);
+      color: #c7e69b;
+    }
+
+    /* ----- TICKER ----- */
+    .ticker {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 17px 0;
+      overflow: hidden;
+    }
+
+    .ticker-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
+      color: var(--text-soft);
+      font: 10px var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .ticker b {
+      color: #d0d4d7;
+      font-weight: 500;
+    }
+
+    /* ----- SECTIONS ----- */
+    .section {
+      padding: 95px 0;
+    }
+
+    section:nth-of-type(even) {
+      background: var(--bg-elevated) !important;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 50px;
+      margin-bottom: 42px;
+    }
+
+    .section-index {
+      font: 11px var(--mono);
+      color: #92999f;
+    }
+
+    .section h2 {
+      font-size: clamp(32px, 4vw, 49px);
+      line-height: 1.08;
+      letter-spacing: -0.065em;
+      margin: 0 0 17px;
+      max-width: 720px;
+      color: var(--text);
+    }
+
+    .section-head p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 630px;
+      margin: 0;
+    }
+
+    /* ----- CARDS (dark surface) ----- */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 25px;
+      border-radius: 6px;
+      min-height: 230px;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #5a625c;
+      box-shadow: 0 16px 35px #0000000a;
+    }
+
+    .card .icon {
+      width: 35px;
+      height: 35px;
+      border: 1px solid #3d4247;
+      border-radius: 5px;
+      display: grid;
+      place-items: center;
+      font: 13px var(--mono);
+      margin-bottom: 27px;
+      background: #1a1d1f;
+      color: var(--text-muted);
+    }
+
+    .card h3 {
+      font-size: 17px;
+      letter-spacing: -0.04em;
+      margin: 0 0 10px;
+      color: var(--text);
+    }
+
+    .card p {
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .card .output {
+      display: block;
+      font: 10px var(--mono);
+      color: #8e9d84;
+      margin-top: 18px;
+    }
+
+    /* ----- DARK SECTION (matches deep dark) ----- */
+    .dark-section {
+      background: #111315;
+    }
+
+    .dark-section .eyebrow {
+      color: #b5c3ad;
+    }
+
+    .dark-section .section-head p {
+      color: #b0b9ae;
+    }
+
+    .dark-section .section-index {
+      color: #b0b9ae;
+    }
+
+    /* ----- CONTENT GRID ----- */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .content-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 23px;
+      background: var(--surface);
+      min-height: 195px;
+    }
+
+    .content-card .type {
+      font: 10px var(--mono);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .content-card h3 {
+      font-size: 20px;
+      letter-spacing: -0.05em;
+      margin: 20px 0 9px;
+      color: var(--text);
+    }
+
+    .content-card p {
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .sample {
+      margin-top: 17px;
+      padding: 13px;
+      border-left: 2px solid var(--accent);
+      background: #26372b;
+      font-size: 11px;
+      line-height: 1.7;
+      color: #e2e8dc;
+    }
+
+    .sample b {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ----- STEPS ----- */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step {
+      padding: 24px 22px 26px 0;
+      position: relative;
+      background: transparent;
+    }
+
+    .step+.step {
+      padding-left: 22px;
+      border-left: 1px solid var(--border);
+    }
+
+    .step .n {
+      font: 11px var(--mono);
+      color: #92999f;
+    }
+
+    .step h3 {
+      font-size: 15px;
+      margin: 25px 0 9px;
+      letter-spacing: -0.035em;
+      color: var(--text);
+    }
+
+    .step p {
+      font-size: 11px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ----- DO / DON'T ----- */
+    .do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .rule {
+      padding: 25px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .rule.bad {
+      background: #1e1a18;
+      border-color: #3d3430;
+    }
+
+    .rule h3 {
+      font-size: 15px;
+      margin: 0 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+    }
+
+    .rule h3 span {
+      font: 10px var(--mono);
+      border-radius: 3px;
+      padding: 5px 7px;
+      background: #2e3a28;
+      color: #b8d98a;
+    }
+
+    .rule.bad h3 span {
+      background: #3a2e28;
+      color: #d9a68a;
+    }
+
+    .rule ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .rule li {
+      font-size: 12px;
+      line-height: 1.7;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .rule li:before {
+      content: '↗';
+      margin-right: 10px;
+      color: #8fb87a;
+    }
+
+    .rule.bad li:before {
+      content: '×';
+      color: #b07a62;
+    }
+
+    /* ----- METRICS ----- */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 20px 18px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: var(--surface);
+    }
+
+    .metric strong {
+      font-size: 23px;
+      letter-spacing: -0.06em;
+      display: block;
+      margin-bottom: 9px;
+      color: var(--text);
+    }
+
+    .metric span {
+      font-size: 11px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .note {
+      font-size: 11px;
+      line-height: 1.8;
+      color: #8a9298;
+      margin-top: 20px;
+      max-width: 800px;
+    }
+
+    /* ----- FOOTER (dark) ----- */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 27px 0 34px;
+      background: #111315;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer .brand img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .footer p {
+      font-size: 10px;
+      color: #7b847a;
+    }
+
+    .footer a {
+      font-size: 11px;
+      color: #c0c6cb;
+    }
+
+    /* ----- REVEAL ANIMATIONS (scroll) ----- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    @keyframes floatin {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ----- FOCUS ----- */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #17191b;
+    }
+
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 800px) {
+      .hero-grid,
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .hero {
+        padding-top: 62px;
+      }
+
+      .hero:after {
+        right: -300px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .step:nth-child(3) {
+        border-left: 0;
+        padding-left: 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .step:nth-child(4) {
+        border-top: 1px solid var(--border);
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav {
+        gap: 15px;
+      }
+
+      .nav a:not(.pill) {
+        display: none;
+      }
+
+      .topbar {
+        background: rgba(17, 19, 21, 0.94) !important;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .wrap {
+        width: min(100% - 30px, 1160px);
+      }
+
+      .topbar {
+        height: 65px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .cards,
+      .content-grid,
+      .do-dont {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: 0;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .section-head {
+        margin-bottom: 30px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step,
+      .step+.step,
+      .step:nth-child(3) {
+        padding: 20px 0;
+        border-left: 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .step:first-child {
+        border-top: 0;
+      }
+
+      .step h3 {
+        margin-top: 13px;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .ticker-inner {
+        justify-content: flex-start;
+      }
+
+      .nav .pill {
+        padding: 10px 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *:before,
+      *:after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+      <a class="brand" href="#top" aria-label="Convio marketing member guide">
+        <img src="convio.png" alt="Convio logo">
+        <span>convio<span class="dot-accent">.</span></span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#role">The role</a>
+        <a href="#content">Content</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#standards">Standards</a>
+        <a class="pill" href="https://convio.dev/" target="_blank" rel="noreferrer">Visit Convio ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Marketing member · team guide</div>
+          <h1>Make the value<br>of Convio <em>click.</em></h1>
+          <p>Your job is to help the right people understand why Convio matters: one connection that gives AI agents access to tools, project knowledge, reusable skills and controlled workflows.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#role">What you'll work on <span>↓</span></a>
+            <a class="btn secondary" href="https://convio.dev/#hero" target="_blank" rel="noreferrer">Explore the product ↗</a>
+          </div>
+          <div class="micro">CLEAR MESSAGING · USEFUL CONTENT · REAL AUDIENCE FEEDBACK</div>
+        </div>
+        <div class="console" aria-label="Illustrative Convio workflow">
+          <div class="console-top">
+            <div class="dots"><i></i><i></i><i></i></div>
+            <span>CONVIO / WORKFLOW PREVIEW</span>
+            <span>● LIVE CONCEPT</span>
+          </div>
+          <div class="console-label">EXAMPLE AGENT SESSION</div>
+          <div class="terminal-title">From request to reviewed release.</div>
+          <div class="event">
+            <span class="num">01</span>
+            <div><strong>Load project context</strong><small>Read decisions and rules from the Project Contract.</small></div>
+            <span class="tag">CONTEXT</span>
+          </div>
+          <div class="event">
+            <span class="num">02</span>
+            <div><strong>Find and activate a skill</strong><small>Use the procedure that fits the task.</small></div>
+            <span class="tag">SKILLS</span>
+          </div>
+          <div class="event">
+            <span class="num">03</span>
+            <div><strong>Run the pipeline</strong><small>Validation and review happen in sequence.</small></div>
+            <span class="tag">EXECUTE</span>
+          </div>
+          <div class="event">
+            <span class="num">04</span>
+            <div><strong>Request production approval</strong><small>A person reviews the exact action before it proceeds.</small></div>
+            <span class="tag">HUMAN GATE</span>
+          </div>
+          <div class="console-foot">$ One connection. Shared context. Controlled execution.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker">
+      <div class="wrap ticker-inner">
+        <span><b>01</b> Product understanding</span>
+        <span><b>02</b> Developer-first content</span>
+        <span><b>03</b> Community outreach</span>
+        <span><b>04</b> Feedback loops</span>
+      </div>
+    </div>
+
+    <!-- 01 / YOUR ROLE -->
+    <section class="section" id="role">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-index">01 / YOUR ROLE</div>
+          <div>
+            <h2>Turn a technical product into a story people understand.</h2>
+            <p>Marketing is not just posting often. It is finding the clearest way to explain the product, showing the problem it solves, and reaching people who are likely to care.</p>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="icon">01</div>
+            <h3>Explain the product</h3>
+            <p>Learn the core features and translate them into practical benefits for developers and teams using AI agents.</p>
+            <span class="output">OUTPUT · SIMPLE PRODUCT EXPLANATIONS</span>
+          </article>
+          <article class="card reveal reveal-delay-1">
+            <div class="icon">02</div>
+            <h3>Create useful content</h3>
+            <p>Draft short posts, feature spotlights, walkthroughs and examples that show Convio solving a real workflow problem.</p>
+            <span class="output">OUTPUT · POSTS, DEMOS, EXPLAINERS</span>
+          </article>
+          <article class="card reveal reveal-delay-2">
+            <div class="icon">03</div>
+            <h3>Reach the right audience</h3>
+            <p>Identify relevant developer spaces, AI tooling communities and builders. Participate where promotion is allowed and useful.</p>
+            <span class="output">OUTPUT · RELEVANT COMMUNITIES</span>
+          </article>
+          <article class="card reveal">
+            <div class="icon">04</div>
+            <h3>Support launches</h3>
+            <p>Help prepare announcements for new features, updates and demos, with messaging that matches what is actually available.</p>
+            <span class="output">OUTPUT · LAUNCH MATERIALS</span>
+          </article>
+          <article class="card reveal reveal-delay-1">
+            <div class="icon">05</div>
+            <h3>Collect audience feedback</h3>
+            <p>Notice questions, confusion and objections. Share recurring patterns with the team instead of guessing what users want.</p>
+            <span class="output">OUTPUT · FEEDBACK SUMMARY</span>
+          </article>
+          <article class="card reveal reveal-delay-2">
+            <div class="icon">06</div>
+            <h3>Review what works</h3>
+            <p>Track meaningful signals such as replies, link clicks, product visits and demo interest, then adjust future content.</p>
+            <span class="output">OUTPUT · PRACTICAL IMPROVEMENTS</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 / WHAT TO TALK ABOUT (dark-section) -->
+    <section class="section dark-section" id="content">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-index">02 / WHAT TO TALK ABOUT</div>
+          <div>
+            <h2>Show the problem. Then show how Convio helps.</h2>
+            <p>Use the real product as the source of truth. Make the value concrete, avoid vague AI hype, and never promise capabilities that the current product does not offer.</p>
+          </div>
+        </div>
+        <div class="content-grid">
+          <article class="content-card reveal">
+            <div class="type">Angle 01 / Project Contract</div>
+            <h3>Stop making every agent guess.</h3>
+            <p>Explain how project decisions, architecture and permanent rules can be recorded once and reused as shared context.</p>
+            <div class="sample"><b>Possible hook</b><br>“Your coding agent shouldn't have to rediscover your project rules every session.”</div>
+          </article>
+          <article class="content-card reveal reveal-delay-1">
+            <div class="type">Angle 02 / Skills</div>
+            <h3>Make expertise repeatable.</h3>
+            <p>Show how skills can package procedures, questions, checks and validation into a process an agent can follow.</p>
+            <div class="sample"><b>Possible hook</b><br>“A good workflow is more than a prompt. Give your agent a repeatable procedure.”</div>
+          </article>
+          <article class="content-card reveal">
+            <div class="type">Angle 03 / One MCP connection</div>
+            <h3>Less setup friction. A clearer workflow.</h3>
+            <p>Introduce the idea of one MCP connection providing access to tools, skills, project context and pipelines.</p>
+            <div class="sample"><b>Possible hook</b><br>“One connection for the capabilities your AI agent needs to get work shipped.”</div>
+          </article>
+          <article class="content-card reveal reveal-delay-1">
+            <div class="type">Angle 04 / Approval gates</div>
+            <h3>Automation with a human in control.</h3>
+            <p>Highlight the review step before production changes, alongside pipeline validation and run history.</p>
+            <div class="sample"><b>Possible hook</b><br>“Let the workflow run. Keep the final production decision with a person.”</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 / WORKFLOW -->
+    <section class="section" id="workflow">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-index">03 / A SIMPLE WORKFLOW</div>
+          <div>
+            <h2>Make consistent progress without posting for the sake of posting.</h2>
+            <p>A practical loop for turning product updates and audience questions into clear marketing work.</p>
+          </div>
+        </div>
+        <div class="steps">
+          <article class="step reveal">
+            <span class="n">STEP 01</span>
+            <h3>Learn</h3>
+            <p>Read the latest product updates. Test the feature or ask the team for clarification before describing it.</p>
+          </article>
+          <article class="step reveal reveal-delay-1">
+            <span class="n">STEP 02</span>
+            <h3>Choose one point</h3>
+            <p>Pick one audience, one problem and one message. Avoid trying to explain every feature in a single post.</p>
+          </article>
+          <article class="step reveal reveal-delay-2">
+            <span class="n">STEP 03</span>
+            <h3>Publish or share</h3>
+            <p>Prepare a useful post, short demo or community response. Follow each platform's rules and community norms.</p>
+          </article>
+          <article class="step reveal reveal-delay-3">
+            <span class="n">STEP 04</span>
+            <h3>Learn from results</h3>
+            <p>Record reactions, questions, clicks and feedback. Use what you learn to improve the next piece of content.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 / QUALITY BAR -->
+    <section class="section" id="standards" style="padding-top:5px">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-index">04 / QUALITY BAR</div>
+          <div>
+            <h2>Sound like someone who understands the product.</h2>
+            <p>Specific, accurate communication builds trust. Overclaiming, spam and generic AI slogans weaken it.</p>
+          </div>
+        </div>
+        <div class="do-dont">
+          <article class="rule reveal">
+            <h3><span>DO</span> Be specific and credible</h3>
+            <ul>
+              <li>Use the correct product terms: MCP connection, Project Contract, skills, pipelines and approval gates.</li>
+              <li>Show a real use case or workflow instead of listing features without context.</li>
+              <li>Check the current website and changelog before announcing an update.</li>
+              <li>Ask for clarification when a feature or claim is unclear.</li>
+              <li>Keep community outreach relevant, respectful and transparent.</li>
+            </ul>
+          </article>
+          <article class="rule bad reveal reveal-delay-1">
+            <h3><span>AVOID</span> Empty hype and invented claims</h3>
+            <ul>
+              <li>Don't describe Convio as a booking tool, CRM or marketing automation platform.</li>
+              <li>Don't promise integrations, pricing, automation or availability that hasn't been confirmed.</li>
+              <li>Don't use “revolutionary AI” language without explaining the actual benefit.</li>
+              <li>Don't spam unrelated servers, communities or people with repeated links.</li>
+              <li>Don't present a planned feature as already released.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 / MEASURING PROGRESS -->
+    <section class="section" style="padding-top:25px">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="section-index">05 / MEASURING PROGRESS</div>
+          <div>
+            <h2>Look for signs of real interest.</h2>
+            <p>Use these as signals to review, not as targets invented without team agreement.</p>
+          </div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric reveal">
+            <strong>Reach</strong>
+            <span>Relevant people saw the content, not just a large number of random views.</span>
+          </div>
+          <div class="metric reveal reveal-delay-1">
+            <strong>Engagement</strong>
+            <span>Replies, questions, saves and thoughtful discussion.</span>
+          </div>
+          <div class="metric reveal reveal-delay-2">
+            <strong>Intent</strong>
+            <span>Link clicks, demo interest, sign-ups or people exploring the product.</span>
+          </div>
+          <div class="metric reveal reveal-delay-3">
+            <strong>Learning</strong>
+            <span>Useful feedback and clearer understanding of what the audience needs.</span>
+          </div>
+        </div>
+        <p class="note">Coordinate priorities, publishing access, approval requirements and any numerical goals with the team. This guide describes a sensible marketing workflow; the team's actual responsibilities and targets take precedence.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <a class="brand" href="https://convio.dev/" target="_blank" rel="noreferrer">
+        <img src="convio.png" alt="Convio logo">
+        <span>convio<span class="dot-accent">.</span></span>
+      </a>
+      <p>Marketing Member Guide · Keep messaging accurate and useful.</p>
+      <a href="https://convio.dev/" target="_blank" rel="noreferrer">convio.dev ↗</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
